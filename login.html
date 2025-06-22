@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class ="header">
+        <a href="home.php" class="logo">TripNChill <i class="fas fa-plane" style="color: blue;"></i></a>
+            <nav class="navbar">
+                <a href="home.php">home</a>
+                <a href="login.html">Login</a>
+           </nav>
+        </section>
+
+
+
+    <section class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST" name="login" onsubmit="return validate();">
+            <input type="text" name="username" class="input-box" placeholder="Enter Username">
+            <input type="password" name="password" class="input-box" placeholder="Enter Password" >
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html" style="color: var(--main-color);">Register here</a></p>
+    </section>
+
+
+
+
+    <section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>quick lines</h3>
+                <a href="home.php"> <i class="fas fa-angle-right"></i>home</a>
+                <a href="about.php"> <i class="fas fa-angle-right"></i> about</a>
+                <a href="package.php"> <i class="fas fa-angle-right"></i> package</a>
+                <a href="book.php"> <i class="fas fa-angle-right"></i> book </a>
+</div>
+
+<div class="box">
+    <h3>Contact Info</h3>
+    <a href="#"> <i class="fas fa-phone"></i> +91 7780260259</a>  
+    <a href="#"> <i class="fas fa-user"></i> Lavanya</a>  
+    <a href="#"> <i class="fas fa-envelope"></i> Lavanya@gmail.com</a>
+    <a href="#"> <i class="fas fa-map-marker-alt"></i> India</a>  
+</div>
+
+<div class="box">
+    <h3>Follow Us</h3>
+    <a href="#"> <i class="fab fa-facebook"></i> Facebook</a>
+    <a href="#"> <i class="fab fa-twitter"></i> Twitter</a>
+    <a href="#"> <i class="fab fa-instagram"></i> Instagram</a>
+    <a href="#"> <i class="fab fa-linkedin"></i> LinkedIn</a>
+</div>
+
+</div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        function validate() {
+    var username = document.login.username.value.trim();
+    var password = document.login.password.value.trim();
+
+    // Regular expressions to check password complexity
+    var checkSpecial = /[*@!#%&]+/.test(password);
+    var checkUpper = /[A-Z]+/.test(password);
+    var checkLower = /[a-z]+/.test(password);
+    var checkNum = /[0-9]+/.test(password);
+
+    // Check if username or password is empty
+    if(username=="" || username=="null" && password==""|| password=="null"){
+                alert("Please Enter Username(email) and Password");
+                return false;
+            }
+    if(password=="" || password=="null")
+			{
+				alert("please enter ur password");
+				document.login.password.focus();
+				return false;
+			}
+            if (!checkSpecial || !checkLower || !checkUpper || !checkNum) {
+        alert("Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, !, #, %, &, etc.).");
+        document.forms["login"]["password"].focus();
+        return false;
+    }      
+
+    // Check password length
+    if (password.length < 8) {
+        alert("The password should be at least 8 characters long.");
+        document.forms["login"]["password"].focus();
+        return false;
+    }
+
+    return true;
+}
+    </script>
+
+</body>
+</html>

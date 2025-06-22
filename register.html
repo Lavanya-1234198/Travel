@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+<section class ="header">
+        <a href="home.php" class="logo">TripNChill <i class="fas fa-plane" style="color: blue;"></i></a>
+            <nav class="navbar">
+                <a href="home.php">home</a>
+                <a href="login.html">Login</a>
+           </nav>
+        </section>
+
+
+<section class="register">
+    <h2>Register</h2>
+    <form name="register"  action="register.php" method="POST" class="register-form" onsubmit="return validate();">
+        <div class="flex">
+            <div class="inputBox">
+                <span>Full Name:</span>
+                <input type="text" name="name" placeholder="Enter your full name" >
+            </div>
+
+            <div class="inputBox">
+                <span>Username:</span>
+                <input type="email" name="username" placeholder="Enter your email" >
+            </div>
+
+            <div class="inputBox">
+                <span>Password:</span>
+                <input type="password" name="password" placeholder="Enter your password" >
+            </div>
+
+            <div class="gender-box">
+                <span>Gender:</span>
+                <label><input type="radio" name="gender" value="Male" > Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+            </div>
+
+            <div class="inputBox">
+                <span>Country:</span>
+                <select name="country" >
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</section>
+
+<section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>quick lines</h3>
+                <a href="home.php"> <i class="fas fa-angle-right"></i>home</a>
+                <a href="about.php"> <i class="fas fa-angle-right"></i> about</a>
+                <a href="package.php"> <i class="fas fa-angle-right"></i> package</a>
+                <a href="book.php"> <i class="fas fa-angle-right"></i> book </a>
+</div>
+
+<div class="box">
+    <h3>Contact Info</h3>
+    <a href="#"> <i class="fas fa-phone"></i> +91 7780260259</a>  
+    <a href="#"> <i class="fas fa-user"></i> Lavanya</a>  
+    <a href="#"> <i class="fas fa-envelope"></i> Lavanya@gmail.com</a>
+    <a href="#"> <i class="fas fa-map-marker-alt"></i> India</a>  
+</div>
+
+<div class="box">
+    <h3>Follow Us</h3>
+    <a href="#"> <i class="fab fa-facebook"></i> Facebook</a>
+    <a href="#"> <i class="fab fa-twitter"></i> Twitter</a>
+    <a href="#"> <i class="fab fa-instagram"></i> Instagram</a>
+    <a href="#"> <i class="fab fa-linkedin"></i> LinkedIn</a>
+</div>
+
+</div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+    function validate() {
+        var full_name = document.register.full_name.value;
+        var username = document.register.username.value;
+        var password = document.register.password.value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var country = document.register.country.value;
+    
+        var alpha = /^[A-Za-z ]+$/;
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var checkSpecial = /[*@!#%&]+/.test(password);
+        var checkUpper = /[A-Z]+/.test(password);
+        var checkLower = /[a-z]+/.test(password);
+        var checkNum = /[0-9]+/.test(password);
+    
+        if (full_name === "" || !alpha.test(full_name)) {
+            alert("Please enter a valid full name containing only alphabetic characters.");
+            document.register.full_name.focus();
+            return false;
+        }
+        
+        if (username === "" || !emailPattern.test(username)) {
+            alert("Please enter a valid email address.");
+            document.register.username.focus();
+            return false;
+        }
+        
+        if (!checkSpecial || !checkLower || !checkUpper || !checkNum || password.length < 8) {
+            alert("Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, !, #, %, &, etc.).");
+            document.register.password.focus();
+            return false;
+        }
+        
+        if (!gender) {
+            alert("Please select your gender.");
+            return false;
+        }
+        
+        if (country === "") {
+            alert("Please select your country.");
+            document.register.country.focus();
+            return false;
+        }
+        
+        return true;
+    }
+    
+        
+    </script>
+
+</body>
+</html>
